@@ -1,8 +1,8 @@
-const array = ['Maconha', 'cocaina', 'LSD'];
+const pioresDrogasMaleficas = ['Maconha', 'cocaina', 'LSD'];
 
 (() => {
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
+  for (let index = 0; index < pioresDrogasMaleficas.length; index++) {
+    const element = pioresDrogasMaleficas[index];
 
     console.log(element);
   }
