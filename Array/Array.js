@@ -1,6 +1,6 @@
 console.log(typeof Array,typeof new Array, typeof [])
 
-//Arrray de forma instanciada
+//Arrray instanciado
 let aprovados = new Array('Bia', 'Carlos', 'Ana')
 console.log(aprovados)
 
@@ -16,11 +16,11 @@ console.log(aprovados.length) // .legth é usado para medir o tamanho de indices
 
 aprovados[9] = 'Rafael'
 console.log(aprovados.length)
-console.log(aprovados[7] === null)
 console.log(aprovados[8] === undefined)
+console.log(aprovados === null)
 
 console.log(aprovados)
-aprovados.sort() //.sort = Organiza em ordem alfabética
+aprovados.sort() //.sort = Organiza em Ordem Alfabética
 console.log(aprovados)
 
 delete aprovados[1]
