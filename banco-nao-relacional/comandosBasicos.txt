@@ -1,0 +1,8 @@
+help - Ajuda
+cls - Limpar
+show dbs - Exibir os bancos de dados  (database)
+use wm - Usar uma database, use e nome da db
+db.createCollection('estados') - Criar Collection
+show collections - Exibir collections
+db.createCollection('Estados') - Ele se im porta com é maior e menos Case Sentsitive
+db.Estados.drop() - Excluir 

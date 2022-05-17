@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav>
+        <a href wm-nav="/html/exercicios/teste.html">00 - teste</a> |
+        <a href wm-nav="/html/texto1.html">01 - Texto 1</a> |
+        <a href wm-nav="/html/texto2.html">02 - Texto 2</a> |
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso de Web Moderno
+    </footer>
+    <script>
+        document.querySelectorAll('[wm-nav]').forEach(link => { // Aqui associamos a cada link uma função
+            const conteudo = document.getElementById('conteudo') //Obtemos o conteudo atreavés do get...
+            link.onclick = function (e) { //Função que sera disparada ao clique 
+                e.preventDefault() //Previnir o comp. padrão navegar (ficar parado aqui) Acesso ao elem.
+               
+                fetch(link.getAttribute('wm-nav')) //Fetch faz uma requisição ajax em cima do atributo href, link da pag.
+                    .then(resp => resp.text()) //retorna
+                    .then(html => conteudo.innerHTML = html) //Subistitui o conteudo de section.
+            }
+        }) 
+    </script>
+</body>
+</html>

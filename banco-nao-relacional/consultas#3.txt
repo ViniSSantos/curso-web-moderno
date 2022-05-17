@@ -1,0 +1,6 @@
+db.estados.aggregate([
+    { $match: {"cidades.nome": "Sorocaba"} },         // Localizamos a cidade dentro do estado(Documento)
+    { $unwind: "$cidades"},                          // Desenrola mesmo estado 1 com cada ciade, 3 documentos = 3 obejtos
+    { $match: {"cidades.nome": "Sorocaba"} },       // Flitrou novamente em cidade.nome
+    { $project: {_id: "$cidades._id"} }            // novo doc. apenas com ai de Sorocaba.
+]).pretty()
