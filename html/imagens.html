@@ -1,0 +1,127 @@
+<div wm-slider>
+    <p>
+        <img 
+        src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Pedras e Mar"
+        width="513" height="342"
+        title="Pedar e Mar, arte grafite"
+        >
+    </p>
+    
+    <p>
+        <img 
+        src="/html/img/loading.gif"
+        alt="Loading"
+        title="Carregando">
+        
+    </p>
+    <p class="circular">
+        <img 
+        src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Rio de Janeiro"
+        width="342">
+    
+    </p>
+    
+    <p class="texto">
+        <img 
+        src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Avatar"
+        height="50" >
+    kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+    kiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+    pppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+    eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+    lorem
+    
+    </p>
+    
+    <p class="cidade">
+    
+    </p>
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+                media="(min-width: 600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<style>
+p{
+    position: absolute;
+    display: none;
+}
+
+.circular {
+    width: 513px;
+    background-color: grey;
+
+}
+
+.texto {
+    width: 400px;
+}
+
+.texto img {
+    margin: 10px;
+}
+
+.cidade {
+    width: 513px;
+    height: 342px;
+    background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 115%;
+
+}
+</style>
+<script>
+    function mover(elemento, posicaoInicio, posicaoFim, passo, callback){
+        const novoInicio = posicaoInicio - passo //calculei o novo inicio
+        if(novoInicio >= posicaoFim) { //Verifiquei se é maior que o fim
+            elemento.style.left = novoInicio + 'px' //setei o left, para novo inicio
+            setTimeout(() => mover(elemento, novoInicio, posicaoFim, passo, callback), 8) // 8 valor de velocidade
+        } else {
+            callback()
+        }
+    }
+
+   // const p = document.querySelector('[wm-slider] > p') // pegamos o primeiro elemento do p entro de wm-slider
+    //p.style.display = 'block'
+    //mover(p, 1400, -520, 5, () => {
+    //    console.log('Terminou!!');
+    //})
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'
+
+        const posicaoInicio = innerWidth //largura interna (tela)
+        const posicaoFim = -slide.clientWidth // largura cliente no caso aqui a "tag p"
+
+        slide.style.left = `${posicaoInicio}px`
+
+        mover(slide, posicaoInicio, posicaoFim, 5, () => {
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+    }
+
+    function getProximo(lista, atual) {
+        const i = lista.indexOf(atual) + 1 // Aqui me retorna o index atual e "+ 1 me dá o proximo"
+        return i < lista.length ? lista[i] : lista[0] // Pode ser que não esteja na lista
+
+    }
+
+    slider()
+
+</script>
